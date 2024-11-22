@@ -7,7 +7,6 @@ class AuthViewModel: ObservableObject {
     init() {
         self.userSession = Auth.auth().currentUser
         print("\(self.userSession?.email!)")
-        logout()
     }
     
     // Login

@@ -2,19 +2,30 @@ import SwiftUI
 
 struct ListView: View {
     
-    private let viewModel = ListViewModel()
+    @ObservedObject private var viewModel = ListViewModel()
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Cards
-            cards
-            actions
+        Group {
+            if viewModel.users.count > 0 {
+                VStack(spacing: 0) {
+                    // Cards
+                    cards
+                    actions
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.black)
+                )
+                .padding(.horizontal, 6)
+            } else {
+                ProgressView()
+                    .padding()
+                    .tint(Color.white)
+                    .background(Color.gray)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .scaleEffect(1.5)
+            }
         }
-        .background(
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color.black)
-        )
-        .padding(.horizontal, 6)
     }
 }
 
