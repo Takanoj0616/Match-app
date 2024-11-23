@@ -6,6 +6,7 @@ struct InputField: View {
     let lable: String
     let plceholder: String
     var isSecureFiled = false
+    var withDivider: Bool = true
     
     var body: some View {
         
@@ -20,7 +21,10 @@ struct InputField: View {
             } else {
                 TextField(plceholder, text: $text)
             }
-            Divider()
+            
+            if withDivider {
+                Divider()
+            }
         }
     }
 }

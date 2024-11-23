@@ -18,26 +18,7 @@ struct RegistrationView: View {
                 VStack(spacing: 24) {
                     InputField(text: $email, lable: "メールアドレス", plceholder: "入力してください")
                     InputField(text: $name, lable: "お名前", plceholder: "入力してください")
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Text("年齢")
-                                .foregroundStyle(Color(.darkGray))
-                                .fontWeight(.semibold)
-                                .font(.footnote)
-                            Spacer()
-                            Picker(selection: $age) {
-                                ForEach(18..<100) { number in
-                                    Text("\(number)")
-                                        .tag(number)
-                                }
-                            } label: {
-                                Text("年齢")
-                            }
-                            .tint(.black)
-                            
-                        }
-                        Divider()
-                    }
+                    PickerField(selection: $age, titles: "年齢")
                     InputField(text: $password, lable: "パスワード", plceholder: "6文字以上で入力してください", isSecureFiled: true)
                     InputField(text: $conforemPassword, lable: "パスワード(確認用）", plceholder: "6文字以上で入力してください", isSecureFiled: true)
                 }
